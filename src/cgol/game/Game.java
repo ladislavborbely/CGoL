@@ -1,7 +1,6 @@
 package cgol.game;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import cgol.game.swing.BoardPanel;
 import cgol.game.swing.InfoPanel;
@@ -94,9 +93,8 @@ public class Game {
 	}
 
 	private void ageBornCells() {
-		Iterator<Cell> cellsIterator = cells.iterator();
-		while (cellsIterator.hasNext()) {
-			cellsIterator.next().setState(CellState.ALIVE);
+		for (Cell current : cells) {
+			current.setState(CellState.ALIVE);
 		}
 	}
 
