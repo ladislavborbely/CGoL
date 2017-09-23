@@ -6,11 +6,7 @@ import cgol.game.swing.BoardPanel;
 import cgol.game.swing.InfoPanel;
 
 public class Game {
-	/**
-	 * xy00 xy10 xy20
-	 * xy01 xy11 xy21
-	 * xy02 xy12 xy22
-	 */
+
 	private static Game instance = null;
 	private ArrayList<Cell> cells;
 	private Cell[][] cellsGridArray;
@@ -23,6 +19,7 @@ public class Game {
 		initArrays();
 	}
 
+	//singleton
 	public static Game getInstance() {
 		if (instance == null) {
 			instance = new Game();
@@ -56,9 +53,7 @@ public class Game {
 					checkCells();
 					removeDeadCells();
 					board.repaintBoard();
-
 					infoPanel.updateData();
-
 					//
 					start = System.currentTimeMillis();
 				}
@@ -70,7 +65,6 @@ public class Game {
 		int neighbours;
 		Cell current;
 
-		// TODO iterator!
 		for (int i = 0; i < cells.size(); i++) {
 			current = cells.get(i);
 			if (i == 0) {
@@ -110,7 +104,6 @@ public class Game {
 				cellsGridArray[current.getX()][current.getY()] = null;
 				cellsIterator.remove();
 			}
-
 		}
 		DebugMsg.echo("removeDeadCells: list after:" + cells.size(), 3);
 		Values.setStatCellsDead(Values.getStatCellsDead() + (cellCount - cells.size())); // add dead cell count to stats
